@@ -5,7 +5,7 @@ import sys
 """
 There are 3 different fault conditions detected
 1) The variation between predicted encoder value and actual encoder value exceeds {stdev_encoder_diff} * 3 more than {max_number_variations} times
-2) The variation exceedes {max_encoder_diff} once
+2) The variation exceeds {max_encoder_diff} once
 3) The either the Encoder or Potentiometer have the same value for more than {max_number_same_values} times
 
 {max_encoder_diff} and {stdev_encoder_diff} are calculated from normal.csv

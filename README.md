@@ -12,7 +12,7 @@ There are 3 different fault conditions detected
 
 {max_encoder_diff} and {stdev_encoder_diff} are calculated from normal.csv
 
-The {time} is reported for the earliest fault condition detected. It is possible that one fault condition could be detected earlier than another, but have a time stamp at a later time. #TODO choose the earliest fault of all conditions.
+The {time} is reported for the earliest fault condition detected. It is possible that one fault condition could be detected earlier than another, but have a time stamp at a later time.
 
 The perfect.csv will generate a same value fault for obvious reasons.
 

@@ -24,15 +24,29 @@ def read_file(filename):
             else:
                 test_encoder[time]=encoder
                 test_pot[time]=pot
-
-        encoder_offset=round(mean(cal_encoder))
         pot_offset=round(mean(cal_pot))
-        encoder_min=min(cal_encoder)
-        encoder_max=max(cal_encoder)
-        print(encoder_offset,pot_offset,encoder_min,encoder_max)
-        for (time,pot) in test_pot.items():
-            encoder=test_encoder[time]
-            encoder_predict=(pot-pot_offset)*slope
-            encoder_diff=abs(encoder_predict-encoder)
-            print (time,pot,encoder,encoder_predict,encoder_diff)
-read_file("error.csv")
+
+        return(pot_offset,test_encoder,test_pot)
+
+def get_noisefigure(pot_offset,test_encoder,test_pot):
+   encoder_diff=[]
+   for (time,pot) in test_pot.items():
+       encoder=test_encoder[time]
+       encoder_predict=(pot-pot_offset)*slope
+       encoder_diff.append(abs(encoder_predict-encoder))
+   return(max(encoder_diff))
+
+def test_file(pot_offset,test_pot,test_encoder,max_encoder_diff):
+   for (time,pot) in test_pot.items():
+       encoder=test_encoder[time]
+       encoder_predict=(pot-pot_offset)*slope
+       encoder_diff=abs(encoder_predict-encoder))
+       if(encoder_diff>max_encoder_diff):
+           print(time,pot,encoder,encoder_predict,encoder_diff,max_encoder_diff)
+
+
+(pot_offset,test_encoder,test_pot)=read_file("normal.csv")
+max_encoder_diff=get_noisefigure(pot_offset,test_encoder,test_pot)
+
+(pot_offset,test_encoder,test_pot)=read_file("error.csv")
+test_file(pot_offset,test_pot,test_encoder,max_encoder_diff)
